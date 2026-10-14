@@ -13,12 +13,18 @@
 
 /* TODO: one helper that takes a port/pin and a work time, then three thin
  *       wrappers. Do not copy-paste the body three times. */
+void helper(GPIO_TypeDef *port, uint16_t pin, uint32_t work_us){
+    HAL_GPIO_WritePin(port, pin, 1);
+    dwt_busy_wait_us((uint32_t)work_us);
+    HAL_GPIO_WritePin(port, pin, 0);
+}
 
 void task_a(void *argument)
 {
     (void)argument;
     for (;;) {
         /* TODO */
+        helper(GPIOA, (1U << TASK_A_PIN), TASK_A_WORK_US);
     }
 }
 
@@ -27,6 +33,7 @@ void task_b(void *argument)
     (void)argument;
     for (;;) {
         /* TODO */
+        helper(GPIOA, (1U << TASK_B_PIN), TASK_B_WORK_US);
     }
 }
 
@@ -35,5 +42,6 @@ void task_c(void *argument)
     (void)argument;
     for (;;) {
         /* TODO */
+        helper(GPIOA, (1U << TASK_C_PIN), TASK_C_WORK_US);
     }
 }
