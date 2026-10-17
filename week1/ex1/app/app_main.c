@@ -25,11 +25,13 @@
 static void bringup_task(void *argument)
 {
     (void)argument;
-
+    volatile UBaseType_t stackFreeWords = 0;
     for (;;) {
         /* TODO */
         HAL_GPIO_TogglePin(BLINK_PORT, BLINK_PIN);
         vTaskDelay(pdMS_TO_TICKS(BLINK_PERIOD_MS));
+
+        stackFreeWords = uxTaskGetStackHighWaterMark(NULL);
     }
 }
 

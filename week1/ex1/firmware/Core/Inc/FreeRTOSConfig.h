@@ -5,7 +5,7 @@
 
 //Tick related
 #define configCPU_CLOCK_HZ 8000000U
-#define configTICK_RATE_HZ 1000U
+#define configTICK_RATE_HZ 100U
 
 //Schedule related
 #define configUSE_PREEMPTION 1U
@@ -31,6 +31,7 @@
 #define configUSE_IDLE_HOOK 0
 #define configUSE_TICK_HOOK 0
 #define INCLUDE_vTaskDelay 1
+#define INCLUDE_uxTaskGetStackHighWaterMark 1
 
 #define vPortSVCHandler     SVC_Handler
 #define xPortPendSVHandler  PendSV_Handler

@@ -1,18 +1,20 @@
 # Report — Week 1 / Ex1
 
-`student_id`: 2412108    Commit của PREDICTION.md: ______
+`student_id`: 2412108    Commit của PREDICTION.md: 7283630
 
 ## 1. Số đo
 | Đại lượng | Giá trị |
 |---|---|
 | `BLINK_PERIOD_MS` (từ params.h) | 97 |
-| Chu kỳ đo được — min | |
-| Chu kỳ đo được — max | |
-| Chu kỳ đo được — trung bình | |
-| Sai số trung bình vs `BLINK_PERIOD_MS` | |
-| `uxTaskGetStackHighWaterMark()` của bringup_task | words |
+| Chu kỳ đo được — min |96.918 |
+| Chu kỳ đo được — max |96.919 |
+| Chu kỳ đo được — trung bình |96.918260 |
+| Sai số trung bình vs `BLINK_PERIOD_MS` |-0.08174 |
+| `uxTaskGetStackHighWaterMark()` của bringup_task | 98 words |
 
-Ảnh PulseView (>= 10 chu kỳ, đọc được giá trị): `![](do_ex1.png)`
+Ảnh PulseView — tick rate 1000 Hz:
+
+![Dạng sóng PA0 khi tick rate là 1000 Hz](measurements/tick1000/Screenshot%202026-10-17%20192824.png)
 
 ## 2. Ba handler của kernel
 | Tên trong port ARM_CM3 | Tên trong vector table | Nhiệm vụ |
@@ -42,8 +44,19 @@ HAL_Delay() chờ bằng cách liên tục kiểm tra uwTick nên vẫn chiếm 
 
 ## 4. Lệch so với dự đoán
 Với mỗi mục trong `PREDICTION.md` lệch so đo: lệch bao nhiêu, và **nguyên nhân vật lý**
-(không được trả lời "do sai số").
+(không được trả lời "do sai số").  
 
+Chu kỳ trung bình lệch so với dự đoán 0.08174ms. Nguyên nhân có thể là do thạch anh dao động với tần số không đúng chính xác 8MHz như đã khai báo.
 ## 5. Câu hỏi đánh đổi
 `configTICK_RATE_HZ` = 1000 trong bài này. Dựa vào số đo của **bạn**, nếu hạ xuống
-100 Hz thì chu kỳ LED và sai số thay đổi thế nào? Trả lời bằng con số, không bằng lý thuyết.
+100 Hz thì chu kỳ LED và sai số thay đổi thế nào? Trả lời bằng con số, không bằng lý thuyết.  
+| Đại lượng | Giá trị |
+|---|---|
+| Chu kỳ đo được — min |89.924000 |
+| Chu kỳ đo được — max |89.925000 |
+| Chu kỳ đo được — trung bình |89.924150 |
+| Sai số trung bình vs `BLINK_PERIOD_MS` |-7.07585 |
+
+Ảnh PulseView — tick rate 100 Hz:
+
+![Dạng sóng PA0 khi tick rate là 100 Hz](measurements/tick100/Screenshot%202026-10-17%20193603.png)
