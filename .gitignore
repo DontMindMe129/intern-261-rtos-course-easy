@@ -18,6 +18,12 @@ CMakeUserPresets.json
 *.map
 *.list
 
+# Ex3: keep large full-sample CSV exports locally; retain captures and scripts.
+# CSV submission still needs a separate delivery method or Git LFS.
+/week1/ex3/measurements/**/*.csv
+/week1/ex1/measurements/**/*.csv
+/week1/ex2/measurements/**/*.csv
+
 # IDE
 .vscode/
 .settings/
