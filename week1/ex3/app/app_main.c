@@ -47,3 +47,27 @@ void vApplicationMallocFailedHook(void){
     __disable_irq();
     while(1){}
 }
+
+static volatile uint32_t idleLoopCount = 0;
+static volatile uint32_t measurementDone = 0;
+
+void vApplicationIdleHook(void)
+{
+    static uint32_t start;
+    static uint32_t started = 0;
+
+    if (measurementDone) {
+        return;
+    }
+
+    if (!started) {
+        start = DWT->CYCCNT;
+        started = 1;
+    }
+
+    if ((uint32_t)(DWT->CYCCNT - start) < SystemCoreClock) {
+        idleLoopCount++;
+    } else {
+        measurementDone = 1;
+    }
+}

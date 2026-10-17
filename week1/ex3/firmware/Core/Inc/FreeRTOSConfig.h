@@ -28,7 +28,7 @@
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY (configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY << (8 - configPRIO_BITS))
     
 #define configTICK_TYPE_WIDTH_IN_BITS TICK_TYPE_WIDTH_32_BITS
-#define configUSE_IDLE_HOOK 0
+#define configUSE_IDLE_HOOK 0 // = 1 cho câu 6 report
 #define configUSE_TICK_HOOK 0
 #define INCLUDE_vTaskDelay 1
 #define INCLUDE_xTaskDelayUntil 1
