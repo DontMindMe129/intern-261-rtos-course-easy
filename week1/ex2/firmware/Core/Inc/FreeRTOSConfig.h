@@ -9,7 +9,7 @@
 
 //Schedule related
 #define configUSE_PREEMPTION 1U
-#define configMAX_PRIORITIES 5U
+#define configMAX_PRIORITIES 6U
 #define configUSE_TIME_SLICING 1U
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0U
 
@@ -35,6 +35,16 @@
 #define vPortSVCHandler     SVC_Handler
 #define xPortPendSVHandler  PendSV_Handler
 #define xPortSysTickHandler SysTick_Handler
+
+//Cpu Share
+#define configGENERATE_RUN_TIME_STATS 1
+#define configUSE_TRACE_FACILITY      1
+
+#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() \
+    do { DWT->CYCCNT = 0U; } while (0)
+
+#define portGET_RUN_TIME_COUNTER_VALUE() (DWT->CYCCNT)
+
 
 #define configASSERT(x)                       \
     do {                                      \

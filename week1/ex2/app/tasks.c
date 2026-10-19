@@ -11,6 +11,8 @@
 #include "params.h"
 #include "tasks.h"
 
+static void capture_runtime_once(void);
+
 /* TODO: one helper that takes a port/pin and a work time, then three thin
  *       wrappers. Do not copy-paste the body three times. */
 void helper(GPIO_TypeDef *port, uint16_t pin, uint32_t work_us){
@@ -25,6 +27,10 @@ void task_a(void *argument)
     for (;;) {
         /* TODO */
         helper(GPIOA, (1U << TASK_A_PIN), TASK_A_WORK_US);
+
+        capture_runtime_once();
+
+        vTaskDelay(1);
     }
 }
 
@@ -34,6 +40,7 @@ void task_b(void *argument)
     for (;;) {
         /* TODO */
         helper(GPIOA, (1U << TASK_B_PIN), TASK_B_WORK_US);
+        vTaskDelay(1);
     }
 }
 
@@ -43,5 +50,28 @@ void task_c(void *argument)
     for (;;) {
         /* TODO */
         helper(GPIOA, (1U << TASK_C_PIN), TASK_C_WORK_US);
+        vTaskDelay(1);
+    }
+}
+
+/* A, B, C và Idle: tổng cộng 4 task. */
+TaskStatus_t runtimeTasks[4];
+configRUN_TIME_COUNTER_TYPE runtimeTotal;
+volatile UBaseType_t runtimeTaskCount = 0;
+
+static void capture_runtime_once(void)
+{
+    static BaseType_t captured = pdFALSE;
+
+    if ((captured == pdFALSE) &&
+        (DWT->CYCCNT >= configCPU_CLOCK_HZ * 10U)) {
+
+        runtimeTaskCount = uxTaskGetSystemState(
+            runtimeTasks,
+            4U,
+            &runtimeTotal
+        );
+
+        captured = pdTRUE;
     }
 }
