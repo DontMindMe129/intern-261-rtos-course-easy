@@ -1,12 +1,12 @@
 # Report — Week 2 / Ex1
 
-`student_id`: ______    Commit của PREDICTION.md: ______
+`student_id`: 2412108    Commit của PREDICTION.md: c4dd892
 
 ## 1. Kích thước queue tối thiểu
 | | Dự đoán | Đo được | Khớp? |
 |---|---|---|---|
-| `queue_raw` | | | |
-| `queue_filtered` | | | |
+| `queue_raw` |1 | | |
+| `queue_filtered` |1 | | |
 
 Nếu lệch: nguyên nhân (thời gian xử lý thực tế khác ước lượng, jitter I2C, ...).
 

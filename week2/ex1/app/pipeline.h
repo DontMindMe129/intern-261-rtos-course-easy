@@ -4,6 +4,31 @@
 #include <stdint.h>
 #include "FreeRTOS.h"
 #include "queue.h"
+#include "params.h"
+
+/* Có file thử nghiệm cục bộ thì dùng; thiếu file vẫn build baseline. */
+#if __has_include("experiment_config.h")
+#include "experiment_config.h"
+#endif
+
+#ifndef EX1_UART_BAUD
+#define EX1_UART_BAUD UART_BAUD
+#endif
+#ifndef EX1_FILTER_WINDOW
+#define EX1_FILTER_WINDOW FILTER_WINDOW
+#endif
+#ifndef EX1_SENSOR_TIMEOUT_TICKS
+#define EX1_SENSOR_TIMEOUT_TICKS 0U
+#endif
+#ifndef EX1_FILTER_TIMEOUT_TICKS
+#define EX1_FILTER_TIMEOUT_TICKS 0U
+#endif
+
+#ifdef EX1_MEASUREMENT_ENABLED
+#include "measurement.h"
+#else
+#define measurement_begin() ((void)0)
+#endif
 
 /* One raw sample from MPU6050, passed sensor_task -> filter_task. */
 typedef struct {
@@ -17,8 +42,8 @@ typedef struct {
     uint32_t seq;
     int16_t  ax, ay, az;
 } filtered_sample_t;
-
-extern QueueHandle_t queue_raw;
+QueueHandle_t
+extern  queue_raw;
 extern QueueHandle_t queue_filtered;
 
 void sensor_task(void *argument);

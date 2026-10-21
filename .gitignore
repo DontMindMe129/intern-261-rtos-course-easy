@@ -31,3 +31,15 @@ CMakeUserPresets.json
 
 # LibreOffice lock files
 .~lock.*#
+
+# Local study notes
+/week2/ex1/NOTE.md
+/week2/ex1/TEST_PLAN.md
+/week2/ex1/app/experiment_config.h
+/week2/ex1/app/measurement.h
+/week2/ex1/app/measurement.c
+/week2/ex1/measurements/
+/week2/ex1/MEASUREMENT.md
+/week2/ex1/tools/analyze_measurements.py
+/week2/ex1/tools/test_analyze_measurements.py
+/week2/ex1/tools/__pycache__/
