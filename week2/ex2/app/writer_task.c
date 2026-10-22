@@ -4,6 +4,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include <stdio.h>
+#include <string.h>
 
 #include "main.h"
 #include "params.h"
@@ -20,9 +21,35 @@ void writer_task(void *argument)
     uint32_t seq = 0;
     (void)id;
 
+    configASSERT(id < WRITER_COUNT);
+    configASSERT(WRITER_COUNT <= 26); /* A..Z phân biệt nguồn ký tự. */
+    configASSERT(pdMS_TO_TICKS(WRITER_PERIOD_MS) > 0);
+
     for (;;) {
         /* TODO 2 */
-        (void)seq;
+        char msg[MSG_LEN + 1]; /* Thêm chỗ cho '\0'; chỉ truyền MSG_LEN byte. */
+
+        int header_len = snprintf(msg, sizeof(msg), "[T%lu #%010lu] ",
+                                  (unsigned long)id, (unsigned long)seq++);
+
+        if (header_len < 0 || (size_t)header_len >= MSG_LEN - 2U) {
+
+            Error_Handler();
+
+        }
+
+        memset(msg + header_len, (int)('A' + id), MSG_LEN - 2U - (size_t)header_len);
+
+        msg[MSG_LEN - 2U] = '\r';
+
+        msg[MSG_LEN - 1U] = '\n';
+
+        msg[MSG_LEN] = '\0';
+
+        uart_guard_send(msg, MSG_LEN);
+
+
         vTaskDelay(pdMS_TO_TICKS(WRITER_PERIOD_MS));
+        
     }
 }
