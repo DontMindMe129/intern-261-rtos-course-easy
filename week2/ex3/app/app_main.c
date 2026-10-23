@@ -17,7 +17,18 @@ void app_main(void)
      *       REPORT.md — they must leave room for configMAX_PRIORITIES and not
      *       collide with any other task in the system. */
 
+    BaseType_t result = xTaskCreate(task_low, "low", 256U, NULL, 1U, NULL);
+    configASSERT(result == pdPASS);
+
+    result = xTaskCreate(task_mid, "mid", 256U, NULL, 2U, NULL);
+    configASSERT(result == pdPASS);
+
+    result = xTaskCreate(task_high, "high", 256U, NULL, 3U, NULL);
+    configASSERT(result == pdPASS);
+
     vTaskStartScheduler();
+
+    Error_Handler(); /* Scheduler chỉ trả về nếu khởi động thất bại. */
 
     for (;;) {
     }
