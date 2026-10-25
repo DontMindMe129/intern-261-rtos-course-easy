@@ -34,6 +34,7 @@ CMakeUserPresets.json
 
 # Local study notes
 /week2/ex1/NOTE.md
+/week2/ex1/REPORT_DRAFT.md
 /week2/ex2/NOTE.md
 /week2/ex3/NOTE.md
 /week2/ex4/NOTE.md
@@ -47,11 +48,21 @@ CMakeUserPresets.json
 /week2/ex2/app/measurement.c
 /week2/ex2/MEASUREMENT.md
 /week2/ex1/TEST_PLAN.md
-/week2/ex1/app/experiment_config.h
-/week2/ex1/app/measurement.h
-/week2/ex1/app/measurement.c
-/week2/ex1/measurements/
 /week2/ex1/MEASUREMENT.md
-/week2/ex1/tools/analyze_measurements.py
 /week2/ex1/tools/test_analyze_measurements.py
 /week2/ex1/tools/__pycache__/
+
+# Ex1: retain hardware evidence; ignore local runtimes, caches and self-checks.
+/week2/ex1/measurements/*
+!/week2/ex1/measurements/N16/
+!/week2/ex1/measurements/S0/
+!/week2/ex1/measurements/SF/
+!/week2/ex1/measurements/FI/
+!/week2/ex1/measurements/SI/
+!/week2/ex1/measurements/Q1/
+!/week2/ex1/measurements/L16/
+!/week2/ex1/measurements/N32/
+!/week2/ex1/measurements/STEP16/
+!/week2/ex1/measurements/STEP32/
+# These are RAM data dumps, not firmware binaries.
+!/week2/ex1/measurements/*/queue_depth.bin

@@ -57,6 +57,15 @@ void uart_task(void *argument)
         if (HAL_UART_Transmit(&huart1, (uint8_t *)line,
                               (uint16_t)length, 100U) != HAL_OK) {
             uart_transmit_errors++;
+#if EX1_LATENCY_ENABLED || EX1_STEP_ENABLED
+        } else {
+#if EX1_LATENCY_ENABLED
+            measurement_latency_record(in.read_start_cycles, in.window_full);
+#endif
+#if EX1_STEP_ENABLED
+            measurement_step_record(in.seq, in.ax);
+#endif
+#endif
         }
 
         (void)in;

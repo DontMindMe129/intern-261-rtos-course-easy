@@ -11,6 +11,15 @@
 #include "experiment_config.h"
 #endif
 
+#ifndef EX1_QUEUE_LENGTH
+#define EX1_QUEUE_LENGTH QUEUE_LENGTH
+#endif
+#ifndef EX1_LATENCY_ENABLED
+#define EX1_LATENCY_ENABLED 0
+#endif
+#ifndef EX1_STEP_ENABLED
+#define EX1_STEP_ENABLED 0
+#endif
 #ifndef EX1_UART_BAUD
 #define EX1_UART_BAUD UART_BAUD
 #endif
@@ -35,12 +44,19 @@ typedef struct {
     uint32_t seq;   /* monotonically increasing — the only honest way to count
                      * dropped/late samples downstream */
     int16_t  ax, ay, az;
+#if EX1_LATENCY_ENABLED
+    uint32_t read_start_cycles;
+#endif
 } raw_sample_t;
 
 /* One filtered sample, passed filter_task -> uart_task. */
 typedef struct {
     uint32_t seq;
     int16_t  ax, ay, az;
+#if EX1_LATENCY_ENABLED
+    uint32_t read_start_cycles;
+    uint32_t window_full;
+#endif
 } filtered_sample_t;
 QueueHandle_t
 extern  queue_raw;

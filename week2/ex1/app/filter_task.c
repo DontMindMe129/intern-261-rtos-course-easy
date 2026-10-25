@@ -65,6 +65,10 @@ void filter_task(void *argument)
         /* count >= 1; lúc khởi động chỉ chia cho số mẫu thực nhận. */
         filtered_sample_t out;
         out.seq = in.seq;
+#if EX1_LATENCY_ENABLED
+        out.read_start_cycles = in.read_start_cycles;
+        out.window_full = (count == EX1_FILTER_WINDOW);
+#endif
         /* TODO 4: fill out.ax/ay/az from the running average. */
 
         out.ax = (int16_t)(sum_x / (int32_t)count);

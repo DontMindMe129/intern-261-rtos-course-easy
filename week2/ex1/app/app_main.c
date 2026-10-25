@@ -17,6 +17,13 @@ extern UART_HandleTypeDef huart1;
 
 void app_main(void)
 {
+#if EX1_LATENCY_ENABLED
+    measurement_latency_init();
+#endif
+#if EX1_STEP_ENABLED
+    measurement_step_init();
+#endif
+
     /* Đổi baud thực tế trước khi tạo task; terminal phải chọn cùng baud. */
     if (huart1.Init.BaudRate != EX1_UART_BAUD) {
         huart1.Init.BaudRate = EX1_UART_BAUD;
@@ -28,8 +35,8 @@ void app_main(void)
     /* TODO 1: xQueueCreate(QUEUE_LENGTH, sizeof(raw_sample_t)) for queue_raw,
      *         and the equivalent for queue_filtered with filtered_sample_t.
      *         Check both handles are non-NULL before continuing. */
-    queue_raw = xQueueCreate(QUEUE_LENGTH, sizeof(raw_sample_t));
-    queue_filtered = xQueueCreate(QUEUE_LENGTH, sizeof(filtered_sample_t));
+    queue_raw = xQueueCreate(EX1_QUEUE_LENGTH, sizeof(raw_sample_t));
+    queue_filtered = xQueueCreate(EX1_QUEUE_LENGTH, sizeof(filtered_sample_t));
 
     configASSERT(queue_raw != NULL);
     configASSERT(queue_filtered != NULL);

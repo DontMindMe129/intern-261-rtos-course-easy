@@ -15,7 +15,7 @@ extern I2C_HandleTypeDef hi2c1;
 #define SENSOR_ADXL345  2
 
 #ifndef SENSOR_TYPE
-#define SENSOR_TYPE SENSOR_MPU6050
+#define SENSOR_TYPE SENSOR_ADXL345
 #endif
 
 /* Địa chỉ 7 bit, đổi theo mức chân AD0 / SDO thực tế. */
@@ -132,11 +132,24 @@ void sensor_task(void *argument)
         raw_sample_t s = {0};
         s.seq = seq++;
 
+#if EX1_LATENCY_ENABLED
+        s.read_start_cycles = measurement_latency_now();
+#endif
+
         /* Burst read 6 byte cho ba trục. Không gửi mẫu nếu đọc lỗi. */
         if (sensor_read(SENSOR_DATA_REG, data, sizeof(data)) == HAL_OK) {
             s.ax = decode_axis(data[0], data[1]);
             s.ay = decode_axis(data[2], data[3]);
             s.az = decode_axis(data[4], data[5]);
+
+#if EX1_STEP_ENABLED
+            /* Controlled filter input only in STEP profiles. I2C still runs,
+             * but the measured acceleration is replaced, not reported as real data. */
+            s.ax = (s.seq < EX1_STEP_AT_SEQ) ? EX1_STEP_LOW : EX1_STEP_HIGH;
+            s.ay = 0;
+            s.az = 0;
+            measurement_step_begin(s.seq);
+#endif
 
             if (xQueueSend(queue_raw, &s, SENSOR_SEND_TIMEOUT) != pdPASS) {
                 sensor_queue_drops++;
