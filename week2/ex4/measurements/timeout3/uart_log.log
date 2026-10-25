@@ -1,0 +1,80 @@
+TIMEOUT t=80ms bits=0x000003 notify=0
+SYNC t=160ms period=0ms bits=0x000007 notify=0
+TIMEOUT t=244ms bits=0x000003 notify=0
+SYNC t=324ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=408ms bits=0x000003 notify=0
+SYNC t=488ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=572ms bits=0x000003 notify=0
+SYNC t=652ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=736ms bits=0x000003 notify=0
+SYNC t=816ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=900ms bits=0x000003 notify=0
+SYNC t=980ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=1064ms bits=0x000003 notify=0
+SYNC t=1144ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=1228ms bits=0x000003 notify=0
+SYNC t=1308ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=1392ms bits=0x000003 notify=0
+SYNC t=1472ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=1556ms bits=0x000003 notify=0
+SYNC t=1636ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=1720ms bits=0x000003 notify=0
+SYNC t=1800ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=1884ms bits=0x000003 notify=0
+SYNC t=1964ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=2048ms bits=0x000003 notify=0
+SYNC t=2128ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=2212ms bits=0x000003 notify=0
+SYNC t=2292ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=2376ms bits=0x000003 notify=0
+SYNC t=2456ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=2540ms bits=0x000003 notify=0
+SYNC t=2620ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=2704ms bits=0x000003 notify=0
+SYNC t=2784ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=2868ms bits=0x000003 notify=0
+SYNC t=2948ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=3032ms bits=0x000003 notify=0
+SYNC t=3112ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=3196ms bits=0x000003 notify=0
+SYNC t=3276ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=3360ms bits=0x000003 notify=0
+SYNC t=3440ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=3524ms bits=0x000003 notify=0
+SYNC t=3604ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=3688ms bits=0x000003 notify=0
+SYNC t=3768ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=3852ms bits=0x000003 notify=0
+SYNC t=3932ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=4016ms bits=0x000003 notify=0
+SYNC t=4096ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=4180ms bits=0x000003 notify=0
+SYNC t=4260ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=4344ms bits=0x000003 notify=0
+SYNC t=4424ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=4508ms bits=0x000003 notify=0
+SYNC t=4588ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=4672ms bits=0x000003 notify=0
+SYNC t=4752ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=4836ms bits=0x000003 notify=0
+SYNC t=4916ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5000ms bits=0x000003 notify=0
+SYNC t=5080ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5164ms bits=0x000003 notify=0
+SYNC t=5244ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5328ms bits=0x000003 notify=0
+SYNC t=5408ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5492ms bits=0x000003 notify=0
+SYNC t=5572ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5656ms bits=0x000003 notify=0
+SYNC t=5736ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5820ms bits=0x000003 notify=0
+SYNC t=5900ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=5984ms bits=0x000003 notify=0
+SYNC t=6064ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=6148ms bits=0x000003 notify=0
+SYNC t=6228ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=6312ms bits=0x000003 notify=0
+SYNC t=6392ms period=164ms bits=0x000007 notify=0
+TIMEOUT t=6476ms bits=0x000003 notify=0
+SYNC t=6556ms period=164ms bits=0x000007 notify=0
