@@ -1,6 +1,9 @@
 # Report — Week 3 / Ex1
 
-`student_id`: ______    Commit của PREDICTION.md: ______
+`student_id`: 2412108    Commit của PREDICTION.md: `1509e032b7027a37fe9ea2dc06d9123df91dd2f0`
+
+Trạng thái: đã chuẩn bị source và prediction; chưa flash, chưa đo phần cứng.
+Các kết quả thực nghiệm sẽ được bổ sung sau đợt flash và measurement chung.
 
 ## 1. Bằng chứng configASSERT
 Mô tả/log/ảnh lúc priority sai (bước 4 README) + giải thích chính xác **vì sao**
