@@ -1,0 +1,23 @@
+#ifndef WEEK3_EX3_EXPERIMENT_CONFIG_H
+#define WEEK3_EX3_EXPERIMENT_CONFIG_H
+
+#include "params.h"
+
+/* Normal build: 128 bytes. Select DOUBLE_BUFFER for REPORT question 6. */
+#define EX3_TEST_NORMAL 1
+#define EX3_TEST_DOUBLE_BUFFER 2
+#ifndef EX3_TEST_CASE
+#define EX3_TEST_CASE EX3_TEST_NORMAL
+#endif
+#if EX3_TEST_CASE == EX3_TEST_NORMAL
+#define EX3_STREAM_BYTES STREAM_BUFFER_BYTES
+#elif EX3_TEST_CASE == EX3_TEST_DOUBLE_BUFFER
+#define EX3_STREAM_BYTES (2U * STREAM_BUFFER_BYTES)
+#else
+#error "Invalid EX3_TEST_CASE"
+#endif
+
+#define EX3_TX_QUEUE_LENGTH 8U
+#define EX3_TX_LINE_BYTES 160U
+#define EX3_TX_TIMEOUT_MS 100U
+#endif
