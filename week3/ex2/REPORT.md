@@ -1,6 +1,9 @@
 # Report — Week 3 / Ex2
 
-`student_id`: ______    Commit của PREDICTION.md: ______
+`student_id`: 2412108    Commit của PREDICTION.md: `0f3e893`
+
+Trạng thái: đã build/link; chưa flash và chưa đo phần cứng. Flash và measurement
+sẽ thực hiện trong đợt chung sau. Chế độ thử callback block 50 ms chưa được thêm.
 
 ## 1. Nảy phím trước/sau
 Ảnh logic analyzer: tín hiệu thô (nhiều cạnh nảy) và tín hiệu "PRESS" sau khi
