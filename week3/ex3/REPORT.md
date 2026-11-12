@@ -1,6 +1,10 @@
 # Report — Week 3 / Ex3
 
-`student_id`: ______    Commit của PREDICTION.md: ______
+`student_id`: 2412108    Commit của PREDICTION.md: `6a08308`
+
+Trạng thái: đã build/link firmware và kiểm thử parser/script offline;
+chưa flash, chưa mở COM kiểm thử board và chưa có số đo phần cứng.
+Flash và measurement sẽ được thực hiện trong đợt chung sau.
 
 ## 1. Thời gian byte & độ sâu stream buffer
 Phép tính thời gian 1 byte ở `RX_BAUD`, và số lệnh tối đa chứa được trong
