@@ -66,3 +66,14 @@ CMakeUserPresets.json
 !/week2/ex1/measurements/STEP32/
 # These are RAM data dumps, not firmware binaries.
 !/week2/ex1/measurements/*/queue_depth.bin
+
+# Week 3: keep source, reports, predictions, AI logs and hardware evidence.
+# Local measurement instructions, backups, disassembly and Python caches.
+/week3/MEASUREMENTS.md
+/week3/ex*/MEASUREMENT.md
+/week3/ex*/firmware_disassembly.txt
+/week3/ex*/measurements/source_snapshots/
+/week3/ex*/measurements/README.md
+/week3/ex*/measurements/*/NOTES.md
+/week3/ex*/measurements/*/LA_SETUP.md
+/week3/**/__pycache__/
