@@ -11,6 +11,7 @@
 #include "main.h"
 #include "params.h"
 #include "runtime_stats.h"
+#include "supervisor.h"
 
 static uint32_t s_previous_cycles;
 static uint64_t s_total_cycles;
@@ -29,6 +30,48 @@ static const char *task_state_name(eTaskState state)
     }
 }
 
+static void print_cpu_rows(char *table)//để trình bày dễ đọc hơn
+{
+    /* Keep the kernel's data; replace its tabs with visible column borders. */
+    char *row = table;
+    while (*row != '\0') {
+        char *end = strchr(row, '\n');
+        char *next = end != NULL ? end + 1 : row + strlen(row);
+        if (end != NULL) {
+            *end = '\0';
+        }
+        row[strcspn(row, "\r")] = '\0';
+
+        char *cycles = strchr(row, '\t');
+        if (cycles == NULL) {
+            break;
+        }
+        *cycles++ = '\0';
+        while (*cycles == '\t') {
+            ++cycles;
+        }
+        char *percent = strchr(cycles, '\t');
+        if (percent == NULL) {
+            break;
+        }
+        *percent++ = '\0';
+        while (*percent == '\t') {
+            ++percent;
+        }
+
+        char line[112];
+        int length = snprintf(line, sizeof(line), "%-16s | %12s | %5s\r\n",
+                              row, cycles, percent);
+        if (length > 0 && length < (int)sizeof(line)) {
+            if (HAL_UART_Transmit(&huart1, (uint8_t *)line,
+                                  (uint16_t)length, 100U) != HAL_OK) {
+                ++g_runtime_stats_uart_errors;
+            }
+        }
+        row = next;
+    }
+}
+
 static void print_task_states(void)
 {
     /* Four tasks in the first experiment: Alpha, Beta, stats and Idle.
@@ -38,7 +81,8 @@ static void print_task_states(void)
     UBaseType_t count = uxTaskGetSystemState(snapshot,
                                             sizeof(snapshot) / sizeof(snapshot[0]),
                                             &total_cycles);
-    const char *title = "State snapshot: task / state / priority\r\n";
+    const char *title = "\r\nState snapshot\r\n"
+                        "Task             | State      | Priority\r\n";
     if (count == 0U) {
         title = "State snapshot failed (task array may be too small)\r\n";
     }
@@ -49,7 +93,7 @@ static void print_task_states(void)
 
     for (UBaseType_t i = 0U; i < count; ++i) {
         char line[96];
-        int length = snprintf(line, sizeof(line), "%s\t%s\t%lu\r\n",
+        int length = snprintf(line, sizeof(line), "%-16s | %-10s | %lu\r\n",
                               snapshot[i].pcTaskName,
                               task_state_name(snapshot[i].eCurrentState),
                               (unsigned long)snapshot[i].uxCurrentPriority);
@@ -112,10 +156,17 @@ void runtime_stats_task(void *argument)
     (void)argument;
     static char buf[configSTATS_BUFFER_MAX_LENGTH];
     TickType_t last_wake = xTaskGetTickCount();
+    TickType_t last_report = last_wake;
 
     for (;;) {
-        /* Wait before the first sample; keep a periodic one-second schedule. */
-        (void)xTaskDelayUntil(&last_wake, pdMS_TO_TICKS(STATS_WINDOW_MS));
+        /* Check in frequently; keep the original one-second report period. */
+        (void)xTaskDelayUntil(&last_wake, pdMS_TO_TICKS(STATS_CHECKIN_MS));
+        TickType_t now = xTaskGetTickCount();
+        if ((TickType_t)(now - last_report) < pdMS_TO_TICKS(STATS_WINDOW_MS)) {
+            supervisor_checkin(SUPERVISOR_BIT_STATS);
+            continue;
+        }
+        last_report = now;
 
         /* TODO 3: vTaskGetRunTimeStats(buf) and print buf over UART.
          *         Note: this walks every task's TCB -- it is itself not free,
@@ -129,7 +180,7 @@ void runtime_stats_task(void *argument)
         char heading[112];
         int length = snprintf(heading, sizeof(heading),
                               "\r\n[tick=%lu] CPU stats since scheduler start\r\n"
-                              "Task\tCycles_low32\tCPU%%\r\n",
+                              "Task             | Cycles_low32 |  CPU%%\r\n",
                               (unsigned long)xTaskGetTickCount());
         if (length > 0 && length < (int)sizeof(heading)) {
             if (HAL_UART_Transmit(&huart1, (uint8_t *)heading, (uint16_t)length, 100U) != HAL_OK) {
@@ -137,10 +188,33 @@ void runtime_stats_task(void *argument)
             }
         }
 
-        const char *body = buf[0] != '\0' ? buf : "No run-time stats available\r\n";
-        if (HAL_UART_Transmit(&huart1, (uint8_t *)body, (uint16_t)strlen(body), 100U) != HAL_OK) {
-            ++g_runtime_stats_uart_errors;
+        if (buf[0] != '\0') {
+            print_cpu_rows(buf);
+        } else {
+            const char *message = "No run-time stats available\r\n";
+            if (HAL_UART_Transmit(&huart1, (uint8_t *)message,
+                                  (uint16_t)strlen(message), 100U) != HAL_OK) {
+                ++g_runtime_stats_uart_errors;
+            }
         }
         print_task_states();
+        char health[144];
+        int health_len = snprintf(health, sizeof(health),
+            "WD bits=0x%02lx refresh=%lu timeout=%lu max_gap_ticks=%lu\r\n"
+            "Checkins alpha=%lu beta=%lu stats=%lu\r\n",
+            (unsigned long)g_supervisor_last_bits,
+            (unsigned long)g_supervisor_refresh_count,
+            (unsigned long)g_supervisor_timeout_count,
+            (unsigned long)g_supervisor_max_refresh_gap_ticks,
+            (unsigned long)g_alpha_checkins, (unsigned long)g_beta_checkins,
+            (unsigned long)g_stats_checkins);
+        if (health_len > 0 && health_len < (int)sizeof(health)) {
+            if (HAL_UART_Transmit(&huart1, (uint8_t *)health,
+                                  (uint16_t)health_len, 100U) != HAL_OK) {
+                ++g_runtime_stats_uart_errors;
+            }
+        }
+        /* Only report progress after this iteration's UART work finishes. */
+        supervisor_checkin(SUPERVISOR_BIT_STATS);
     }
 }

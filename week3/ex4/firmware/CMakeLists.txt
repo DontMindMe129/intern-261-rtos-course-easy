@@ -37,6 +37,12 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+# IWDG driver from the matching local STM32F1 HAL version (1.1.10).
+target_compile_definitions(stm32cubemx INTERFACE HAL_IWDG_MODULE_ENABLED)
+target_sources(STM32_Drivers PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_iwdg.c
+)
+
 # Native FreeRTOS, same layout as Week 3 Ex3.
 add_library(freertos_config INTERFACE)
 target_include_directories(freertos_config INTERFACE

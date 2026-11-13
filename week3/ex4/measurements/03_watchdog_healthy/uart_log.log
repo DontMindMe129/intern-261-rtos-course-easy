@@ -1,0 +1,326 @@
+
+BOOT test3 reset=other
+
+[tick=1001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |        49139 |   <1%
+IDLE             |     71486929 |   99%
+beta             |       253546 |   <1%
+alpha            |       170517 |   <1%
+supervisor       |        42361 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=19 timeout=0 max_gap_ticks=50
+Checkins alpha=42 beta=42 stats=19
+
+[tick=2001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |      4256187 |    2%
+IDLE             |    138825181 |   96%
+beta             |       507150 |   <1%
+alpha            |       341143 |   <1%
+supervisor       |        72831 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=39 timeout=0 max_gap_ticks=108
+Checkins alpha=82 beta=82 stats=39
+
+[tick=3001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |      8458882 |    3%
+IDLE             |    206167789 |   95%
+beta             |       760754 |   <1%
+alpha            |       511769 |   <1%
+supervisor       |       103295 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=59 timeout=0 max_gap_ticks=108
+Checkins alpha=122 beta=122 stats=59
+
+[tick=4001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     12674032 |    4%
+IDLE             |    273497948 |   94%
+beta             |      1014358 |   <1%
+alpha            |       682395 |   <1%
+supervisor       |       133759 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=79 timeout=0 max_gap_ticks=108
+Checkins alpha=162 beta=162 stats=79
+
+[tick=5001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     16888537 |    4%
+IDLE             |    340828746 |   94%
+beta             |      1267962 |   <1%
+alpha            |       853021 |   <1%
+supervisor       |       164223 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=99 timeout=0 max_gap_ticks=108
+Checkins alpha=202 beta=202 stats=99
+
+[tick=6001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     21103070 |    4%
+IDLE             |    408159519 |   94%
+beta             |      1521566 |   <1%
+alpha            |      1023647 |   <1%
+supervisor       |       194687 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=119 timeout=0 max_gap_ticks=108
+Checkins alpha=242 beta=242 stats=119
+
+[tick=7001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     25330060 |    5%
+IDLE             |    475477838 |   94%
+beta             |      1775170 |   <1%
+alpha            |      1194273 |   <1%
+supervisor       |       225151 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=139 timeout=0 max_gap_ticks=108
+Checkins alpha=282 beta=282 stats=139
+
+[tick=8001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     29557108 |    5%
+IDLE             |    542796093 |   94%
+beta             |      2028774 |   <1%
+alpha            |      1364899 |   <1%
+supervisor       |       255615 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=159 timeout=0 max_gap_ticks=108
+Checkins alpha=322 beta=322 stats=159
+
+[tick=9001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     33784749 |    5%
+IDLE             |    610113758 |   94%
+beta             |      2282378 |   <1%
+alpha            |      1535525 |   <1%
+supervisor       |       286079 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=179 timeout=0 max_gap_ticks=108
+Checkins alpha=362 beta=362 stats=179
+
+[tick=10001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     38012414 |    5%
+IDLE             |    677431402 |   94%
+beta             |      2535982 |   <1%
+alpha            |      1706151 |   <1%
+supervisor       |       316543 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=199 timeout=0 max_gap_ticks=108
+Checkins alpha=402 beta=402 stats=199
+
+[tick=11001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     42245654 |    5%
+IDLE             |    744743468 |   94%
+beta             |      2789586 |   <1%
+alpha            |      1876777 |   <1%
+supervisor       |       347007 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=219 timeout=0 max_gap_ticks=108
+Checkins alpha=442 beta=442 stats=219
+
+[tick=12001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     46478894 |    5%
+IDLE             |    812055534 |   93%
+beta             |      3043190 |   <1%
+alpha            |      2047403 |   <1%
+supervisor       |       377471 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=239 timeout=0 max_gap_ticks=108
+Checkins alpha=482 beta=482 stats=239
+
+[tick=13001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     50712134 |    5%
+IDLE             |    879367600 |   93%
+beta             |      3296794 |   <1%
+alpha            |      2218029 |   <1%
+supervisor       |       407935 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=259 timeout=0 max_gap_ticks=108
+Checkins alpha=522 beta=522 stats=259
+
+[tick=14001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     54945395 |    5%
+IDLE             |    946679645 |   93%
+beta             |      3550398 |   <1%
+alpha            |      2388655 |   <1%
+supervisor       |       438399 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=279 timeout=0 max_gap_ticks=108
+Checkins alpha=562 beta=562 stats=279
+
+[tick=15001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     59178656 |    5%
+IDLE             |   1013991690 |   93%
+beta             |      3804002 |   <1%
+alpha            |      2559281 |   <1%
+supervisor       |       468863 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=299 timeout=0 max_gap_ticks=108
+Checkins alpha=602 beta=602 stats=299
+
+[tick=16001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     63411896 |    5%
+IDLE             |   1081303756 |   93%
+beta             |      4057606 |   <1%
+alpha            |      2729907 |   <1%
+supervisor       |       499327 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=319 timeout=0 max_gap_ticks=108
+Checkins alpha=642 beta=642 stats=319
+
+[tick=17001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     67645136 |    5%
+IDLE             |   1148615822 |   93%
+beta             |      4311210 |   <1%
+alpha            |      2900533 |   <1%
+supervisor       |       529791 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=339 timeout=0 max_gap_ticks=108
+Checkins alpha=682 beta=682 stats=339
+
+[tick=18001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     71878376 |    5%
+IDLE             |   1215927888 |   93%
+beta             |      4564814 |   <1%
+alpha            |      3071159 |   <1%
+supervisor       |       560255 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+supervisor       | Blocked    | 3
+WD bits=0x07 refresh=359 timeout=0 max_gap_ticks=108
+Checkins alpha=722 beta=722 stats=359

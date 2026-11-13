@@ -2,18 +2,18 @@
 
 `student_id`: 2412108    Commit của PREDICTION.md: `b1cd5bd`
 
-Trạng thái: đã build/link phần thống kê runtime và snapshot trạng thái task;
-giữ nguyên deadlock_demo.c để thu bằng chứng bản gốc. Chưa flash/debug trên board,
-chưa có số đo phần cứng. Supervisor/IWDG và bước sửa deadlock chưa triển khai.
+
 
 ## 1. Bảng CPU %
+
+Nguồn: [log deadlock gốc](measurements/01_original_deadlock/uart_log.log).
+Lần đo 1 tại tick 1001, lần đo 2 tại tick 7001, cách nhau 6 giây.
 
 | Task | CPU % (lần đo 1) | CPU % (lần đo 2) |
 |---|---|---|
 | alpha | <1% | <1% |
 | beta | <1% | <1% |
-| stats | <1% | 2% |
-| supervisor | <1% | <1% |
+| stats | <1% | 3% |
 | IDLE | 99% | 96% |
 
 Giải thích Idle task chiếm bao nhiêu % và vì sao.  

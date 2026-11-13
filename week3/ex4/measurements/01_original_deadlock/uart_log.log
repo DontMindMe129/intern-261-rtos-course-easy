@@ -1,0 +1,98 @@
+
+[tick=1001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |         1196 |   <1%
+IDLE             |     71991770 |   99%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+
+[tick=2001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |      3096586 |    2%
+IDLE             |    140896385 |   97%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+
+[tick=3001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |      6186888 |    2%
+IDLE             |    209806083 |   97%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+
+[tick=4001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |      9277243 |    3%
+IDLE             |    278715728 |   96%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+
+[tick=5001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     12367598 |    3%
+IDLE             |    347625373 |   96%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+
+[tick=6001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     15457900 |    3%
+IDLE             |    416535071 |   96%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
+
+[tick=7001] CPU stats since scheduler start
+Task             | Cycles_low32 |  CPU%
+stats            |     18548202 |    3%
+IDLE             |    485444769 |   96%
+beta             |         4171 |   <1%
+alpha            |         3754 |   <1%
+
+State snapshot
+Task             | State      | Priority
+stats            | Running    | 1
+IDLE             | Ready      | 0
+beta             | Blocked    | 2
+alpha            | Blocked    | 2
