@@ -3,6 +3,10 @@
 configGENERATE_RUN_TIME_STATS           1
 configUSE_TRACE_FACILITY                1
 configUSE_STATS_FORMATTING_FUNCTIONS    1
+configRUN_TIME_COUNTER_TYPE            uint64_t
+
+# runtime_stats_timer_value() mở rộng CYCCNT 32 bit thành tổng cycles 64 bit.
+# Cần đọc ít nhất một lần trong mỗi khoảng < 59.65 s ở CPU 72 MHz.
 
 # Hai macro bắt buộc, trỏ vào app/runtime_stats.c:
 portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()  runtime_stats_timer_init()
