@@ -9,6 +9,7 @@
 #include "main.h"
 #include "params.h"
 #include "debounce.h"
+#include "experiment_config.h"
 
 #include "task.h"
 
@@ -37,10 +38,7 @@ static void debounce_callback(TimerHandle_t xTimer)
 
     GPIO_PinState current_state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1);
 
-    if(current_state == previous_state){
-        return;
-    }
-    else{
+    if(current_state != previous_state){
         /* Debounced output: HIGH = pressed, LOW = released. */
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7,
                           current_state == GPIO_PIN_RESET ? GPIO_PIN_SET : GPIO_PIN_RESET);
@@ -48,12 +46,17 @@ static void debounce_callback(TimerHandle_t xTimer)
             char tx_buffer[128];
             int length = snprintf(tx_buffer, sizeof(tx_buffer), "PRESS, t = %lu\r\n", (unsigned long)current_tick);
             if (length > 0 && length < (int)sizeof(tx_buffer)) {
-            HAL_UART_Transmit(&huart1, (uint8_t *)tx_buffer, (uint16_t)length, 20U);
+                HAL_UART_Transmit(&huart1, (uint8_t *)tx_buffer, (uint16_t)length, 20U);
             }
         }
         previous_state = current_state;
     }
 
+    /* TODO 2 experiment only: normal builds contain no vTaskDelay here.
+     * Delay after accepting the state; PA7 still marks debounce acceptance. */
+#if EX2_CALLBACK_BLOCK_MS > 0
+    vTaskDelay(pdMS_TO_TICKS(EX2_CALLBACK_BLOCK_MS));
+#endif
 }
 
 static void longpress_callback(TimerHandle_t xTimer)
@@ -85,9 +88,9 @@ void debounce_init(void)
      *         pdTRUE, NULL, longpress_callback); -- pdTRUE = auto-reload.
      *         Check both handles non-NULL. Do NOT xTimerStart() either here --
      *         they are driven entirely from debounce_on_edge(). */
-    s_debounce_timer = xTimerCreate("debounce", pdMS_TO_TICKS(DEBOUNCE_MS), pdFALSE, NULL, debounce_callback);
+    s_debounce_timer = xTimerCreate("debounce", pdMS_TO_TICKS(EX2_DEBOUNCE_MS), pdFALSE, NULL, debounce_callback);
 
-    s_longpress_timer = xTimerCreate("longpress", pdMS_TO_TICKS(LONGPRESS_MS), pdTRUE, NULL, longpress_callback);
+    s_longpress_timer = xTimerCreate("longpress", pdMS_TO_TICKS(EX2_LONGPRESS_MS), pdTRUE, NULL, longpress_callback);
 
     configASSERT(s_debounce_timer != NULL);
     configASSERT(s_longpress_timer != NULL);

@@ -77,3 +77,12 @@ CMakeUserPresets.json
 /week3/ex*/measurements/*/NOTES.md
 /week3/ex*/measurements/*/LA_SETUP.md
 /week3/**/__pycache__/
+
+# Ex2: local viewer settings and stale copies of earlier test captures.
+/week3/ex2/measurements/**/*.pvs
+/week3/ex2/measurements/03_callback_block_50ms/capture.sr
+/week3/ex2/measurements/04_debounce_8ms/capture.sr
+/week3/ex2/measurements/01_debounce_15ms/bounce_release_detail_01.svg
+# Extra local recordings not used by the final report.
+/week3/ex2/measurements/01_debounce_15ms/Session 1
+/week3/ex2/measurements/02_hold_600ms/capture.sr
