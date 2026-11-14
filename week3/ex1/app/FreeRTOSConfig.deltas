@@ -2,11 +2,18 @@
 #
 # Điền giá trị vào chỗ <?>. Mỗi dòng phải giải thích được trong buổi vấn đáp.
 
-configPRIO_BITS                                 <?>
-configLIBRARY_LOWEST_INTERRUPT_PRIORITY         <?>
-configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY    <?>
-configASSERT( x )                               <?>
+configPRIO_BITS                                 <4>
+configLIBRARY_LOWEST_INTERRUPT_PRIORITY         <15>
+configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY    <5>
+configASSERT( x )                               
+    do {                         \
+        if (!(x)) {              \
+            __disable_irq();     \
+            g_assert_failed = 1U; \
+            while (1) { }        \
+        }                        \
+    } while (0)
 
-# ISR_NVIC_PRIO (app/params.h) phải nằm trong khoảng:
+# ISR_NVIC_PRIO (app/params.h) phải nằm trong khoảng: 5-15
 #   configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY  <=  ISR_NVIC_PRIO  <=  configLIBRARY_LOWEST_INTERRUPT_PRIORITY
 # (số CÀNG NHỎ = ưu tiên phần cứng CÀNG CAO). Giải thích tại sao trong REPORT.md.

@@ -11,7 +11,7 @@
 #define EX1_TEST_LOWER_PRIO   4 /* Priority 9, có yield: câu hỏi REPORT. */
 
 #ifndef EX1_TEST_CASE
-#define EX1_TEST_CASE EX1_TEST_ASSERT
+#define EX1_TEST_CASE EX1_TEST_YIELD
 #endif
 
 #if EX1_TEST_CASE == EX1_TEST_ASSERT

@@ -2,10 +2,7 @@
 
 `student_id`: 2412108    Commit của PREDICTION.md: `0f3e893`
 
-Đo trên board ngày 14/11/2026, CPU cấu hình 72 MHz, RTOS tick 1 kHz,
-UART 115200/8N1; logic analyzer 4 MHz. D0 = PA7 (sau debounce), D1 = PB1
-(nút thô, LOW khi nhấn), D2 = PA9/TX ở các lượt có log UART trên capture.
-Bản source cuối chọn debounce 15 ms, long-press 600 ms, không chèn delay 50 ms.
+
 
 ## 1. Nảy phím trước/sau
 

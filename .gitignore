@@ -86,3 +86,7 @@ CMakeUserPresets.json
 # Extra local recordings not used by the final report.
 /week3/ex2/measurements/01_debounce_15ms/Session 1
 /week3/ex2/measurements/02_hold_600ms/capture.sr
+
+# Ex1: local viewer settings and the earlier cursor image replaced by _02.
+/week3/ex1/measurements/**/*.pvs
+/week3/ex1/measurements/02_prio8_yield/latency_prio8_yield_cursor_01.png
